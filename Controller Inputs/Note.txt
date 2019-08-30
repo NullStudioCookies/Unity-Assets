@@ -1,0 +1,11 @@
+The following script and asset are for taking in inputs from controllers.
+Please keep in mind that the script and or asset may not be up to date!
+
+If you do decide to add more inputs to the script remember to add more 
+input axies in Unity's Input system under "Project Settings".
+
+InputManager script:
+"Project Name" -> Assets -> where ever you want
+
+InputManager Asset:
+"Project Name" -> ProjectSettings
