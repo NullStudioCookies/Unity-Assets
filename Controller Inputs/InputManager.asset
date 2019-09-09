@@ -118,7 +118,7 @@ InputManager:
     axis: 3
     joyNum: 0
   - serializedVersion: 3
-    m_Name: X_LeftStickY
+    m_Name: X_RightStickY
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
