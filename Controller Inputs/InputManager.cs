@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-    This script determines the inputs of game controllers
-    and universaly maps all input axies and keys.
-
-    Current mapped controllers:
-    - Xbox one / 360
-    - Playstation 4
-*/
+//==============================================================//
+//  This script determines the inputs of game controllers		//
+//  and universaly maps all input axies and keys.				//
+//																//
+//  Current mapped controllers:									//
+//  - Xbox one / 360											//
+//  - Playstation 4												//
+//==============================================================//
 
 public static class InputManager
 {
