@@ -11,7 +11,7 @@ using UnityEngine;
 //  - Playstation 4												//
 //==============================================================//
 
-public static class InputManager
+public static class ControllerSupport
 {
     public static bool ToggleHold;
     public static bool ToggleHoldExtras;
