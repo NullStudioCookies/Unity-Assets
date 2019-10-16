@@ -1,4 +1,8 @@
 The following script and asset are for taking in inputs from controllers.
+All controller inputs are currently mapped for windows, there is currently
+no support for MacOS or Linux. Currently there is also no support for an
+special features of the controllers like Rumble.
+
 Please keep in mind that the script and or asset may not be up to date!
 
 If you do decide to add more inputs to the script remember to add more 
