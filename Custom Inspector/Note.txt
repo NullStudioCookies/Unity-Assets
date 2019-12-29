@@ -21,3 +21,11 @@ To disable the variables either remove the bool or set it to false;
 public bool A;
 [ConditionalHide("A", false)] public bool B;
 [ConditionalHide("A")] public bool C;
+
+=============================================================================================
+
+To enable/disable the variables using enums
+
+enum EnumName {enumValue1, enumValue2}
+EnumName Variable;
+[ConditionalEnumHide("Variable", (int)EnumName.enumValue1)] public bool B;
