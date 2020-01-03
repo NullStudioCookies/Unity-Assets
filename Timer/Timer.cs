@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour {
     [SerializeField] Text TimerText;
 
     [Space(10)]
-    [SerializeField] int TotalTime;
+    [ConditionalEnumHide("Function", (int)TimerFunction.CountingDown)][SerializeField] int TotalTime;
 
     float CurrentTime;
     string Minutes, Seconds;
