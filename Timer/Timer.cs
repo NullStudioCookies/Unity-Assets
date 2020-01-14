@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This script is a simple timer script witch can either 
+/// count up or count down. The script will allow for reseting,
+/// pausing and unpausing the timer. The timer is displayed on
+/// a UI text object.
+/// </summary>
+
 enum TimerFunction { CountingUp, CountingDown}
 public class Timer : MonoBehaviour {
     [SerializeField] bool TimerIsPaused = true;

@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//==============================================================//
-//  This script determines the inputs of game controllers		//
-//  and universaly maps all input axies and keys.				//
-//																//
-//  Current mapped controllers:									//
-//  - Xbox one / 360											//
-//  - Playstation 4												//
-//  - Switch Joy cons											//
-//==============================================================//
+/// <summary>
+/// This script determines the inputs of game controllers
+/// and universaly maps all input axies and keys. Currently
+/// the script only works on the Windows platform.
+/// 
+/// Current mapped controllers:
+/// - Xbox one / 360
+/// - Playstation 4
+/// - Switch Joy cons
+/// </summary>
 
 public static class ControllerSupport
 {

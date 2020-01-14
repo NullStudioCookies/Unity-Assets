@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// This script is the logic for the custom attributes.
+/// </summary>
+
 [CustomPropertyDrawer(typeof(ConditionalHideAttribute))]
 public class ConditionalHidePropertyDrawer : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {

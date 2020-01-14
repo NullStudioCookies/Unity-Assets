@@ -2,6 +2,11 @@
 using System;
 using System.Collections;
 
+/// <summary>
+/// This script is to create all of the attribute tags
+/// that can be used in any script.
+/// </summary>
+
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
     AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
 public class ConditionalHideAttribute : PropertyAttribute {
