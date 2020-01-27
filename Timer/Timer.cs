@@ -24,6 +24,13 @@ public class Timer : MonoBehaviour {
 
     float CurrentTime;
     string Minutes, Seconds;
+	
+	[ExecuteInEditMode]
+    void OnValidate() {
+        if (TotalTime < 0) {
+            TotalTime = 0;
+        }
+    }
 
     // Start is called before the first frame update
     void Start() {
