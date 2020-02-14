@@ -1,5 +1,5 @@
 The following scripts are for hiding or disabling variables in the inspector.
-Please keep in mind that the script and or asset may not be up to date!
+Please keep in mind that the script and or asset may not be up to date with Unity!
 
 ConditionalHideAttribute.cs
 - This script can be placed anywhere in the project.

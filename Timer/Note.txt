@@ -1,4 +1,4 @@
-Please keep in mind that the script and or asset may not be up to date!
+Please keep in mind that the script and or asset may not be up to date with Unity!
 
 To use this script just simply import it into the project and add the script,
 to any game object in the game scene. This version of the script is using my
