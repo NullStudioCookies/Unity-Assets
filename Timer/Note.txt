@@ -2,7 +2,8 @@ Please keep in mind that the script and or asset may not be up to date with Unit
 
 To use this script just simply import it into the project and add the script,
 to any game object in the game scene. This version of the script is using my
-Conditional Hide Attribute which can also be downloaded in the custom inspector folder.
+Conditional Hide Attribute and Absolute Value Attribute,
+which can also be downloaded in the custom attributes folder.
 
 IF the script does not work or you do not wish to download the custom inspector simply remove 
-"[ConditionalEnumHide...]" or "[ConditionalHide...]" and it will work.
+"[ConditionalEnumHide...]" or "[ConditionalHide...]" and "[AbsoluteValue()]" and it will work.

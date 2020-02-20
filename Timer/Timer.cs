@@ -20,21 +20,21 @@ public class Timer : MonoBehaviour {
     [SerializeField] Text TimerText;
 
     [Space(10)]
-    [ConditionalEnumHide("Function", (int)TimerFunction.CountingDown)][SerializeField] int TotalTime;
+    [ConditionalEnumHide("Function", (int)TimerFunction.CountingDown)][SerializeField] int AllowedTime;
 
     float CurrentTime;
     string Minutes, Seconds;
 	
 	[ExecuteInEditMode]
     void OnValidate() {
-        if (TotalTime < 0) {
-            TotalTime = 0;
+        if (AllowedTime < 0) {
+            AllowedTime = 0;
         }
     }
 
     // Start is called before the first frame update
     void Start() {
-        ResetTimer();
+        ResetTimer(AllowedTime);
     }
 
     // Update is called once per frame
@@ -65,7 +65,8 @@ public class Timer : MonoBehaviour {
         }
     }
 
-    public void ResetTimer() {
+	// Reseting the timer 
+    public void ResetTimer(int TotalTime = 0) {
         TimerIsPaused = true;
         switch (Function) {
             case TimerFunction.CountingUp:
@@ -86,8 +87,34 @@ public class Timer : MonoBehaviour {
                 break;
         }
     }
-
+	
+	// Pause and unpausing the timer at any given time
     public void PauseUnpauseTimer() {
         TimerIsPaused = !TimerIsPaused;
+    }
+
+	// Allows for switching the function of the timer without creating another script
+    public void SwitchTimerFunction(TimerFunction _TimerFunction, int TotalTime = 0) {
+        Function = _TimerFunction;
+
+        TimerIsPaused = true;
+        switch (Function) {
+            case TimerFunction.CountingUp:
+                CurrentTime = 0;
+
+                Minutes = ((int)CurrentTime / 60).ToString();
+                Seconds = (CurrentTime % 60).ToString("f2");
+
+                TimerText.text = Minutes + ":" + Seconds;
+                break;
+            case TimerFunction.CountingDown:
+                CurrentTime = TotalTime;
+
+                Minutes = ((int)CurrentTime / 60).ToString();
+                Seconds = (CurrentTime % 60).ToString("f2");
+
+                TimerText.text = Minutes + ":" + Seconds;
+                break;
+        }
     }
 }
