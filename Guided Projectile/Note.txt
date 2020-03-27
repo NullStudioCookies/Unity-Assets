@@ -5,10 +5,12 @@ to any game object in the game scene. This version of the script is using my Abs
 which can also be downloaded in the custom attributes folder.
 
 IF the script does not work or you do not wish to download the custom inspector simply remove 
-"[AbsoluteValue()]" and it will work.
+"[AbsoluteValue()]", "[ConditionalEnumHide...]" or "[ConditionalHide...]" and it will work.
 
 ===================================================================================================
 
-The method "ShowReward" is empty by default, this is due to the limitless different ways to
-showcase a loot or reward. Finish the method based on how you want to show the loot or 
-reward.
+The script for manually controlling the projectile uses the old system for inputs. Feel free to change
+the script to suit your project as needed.
+
+If you want to use the homing guidence system you will need to set a target for it to track. Simply 
+call the SetTarget() method and asign a game object.
