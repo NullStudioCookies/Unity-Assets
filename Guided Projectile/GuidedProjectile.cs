@@ -8,10 +8,11 @@ enum ForwardAxis { X_Axis, Y_Axis, Z_Axis}
 public class GuidedProjectile : MonoBehaviour {
     [SerializeField] GuidanceSystem GuidanceMethod;
     [Tooltip("This is used to set which way the projectile is facing.")][SerializeField] ForwardAxis ForwardDirection;
-    [SerializeField][AbsoluteValue()] float TurnRate = 0;
-
+    [SerializeField][Range(0, 1)] float TurnRate = 0.5f;
+    [Space(5)]
     [SerializeField] bool SetInitalVelocity = false;
     [ConditionalHide("SetInitalVelocity", true)][SerializeField] float ProjectileVelocity = 0;
+    [SerializeField] bool Tracking = true;
 
     [Header("Control Guided Variables")][Space(5)]
     [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)][SerializeField] string XInputAxis = null;
@@ -48,13 +49,15 @@ public class GuidedProjectile : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        switch (GuidanceMethod) {
-            case GuidanceSystem.Controlled:
-                ControlProjectile();
-                break;
-            case GuidanceSystem.Homing:
-                HomingTarget();
-                break;
+        if (Tracking) {
+            switch (GuidanceMethod) {
+                case GuidanceSystem.Controlled:
+                    ControlProjectile();
+                    break;
+                case GuidanceSystem.Homing:
+                    HomingTarget();
+                    break;
+            }
         }
     }
 
@@ -93,5 +96,9 @@ public class GuidedProjectile : MonoBehaviour {
 
     public void SetTarget(GameObject TargetObject = null) {
         Target = TargetObject;
+    }
+
+    public void EnableTracking() {
+
     }
 }
