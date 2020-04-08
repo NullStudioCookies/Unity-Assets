@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum GuidanceSystem { Controlled, Homing}
-enum ForwardAxis { X_Axis, Y_Axis, Z_Axis}
+enum GuidanceSystem { Controlled, Homing }
+enum ForwardAxis { X_Axis, Y_Axis, Z_Axis }
 [RequireComponent(typeof(Rigidbody))]
 public class GuidedProjectile : MonoBehaviour {
     [SerializeField] GuidanceSystem GuidanceMethod;
-    [Tooltip("This is used to set which way the projectile is facing.")][SerializeField] ForwardAxis ForwardDirection;
-    [SerializeField][Range(0, 1)] float TurnRate = 0.5f;
+    [Tooltip("This is used to set which way the projectile is facing.")] [SerializeField] ForwardAxis ForwardDirection;
+    [SerializeField] [Range(0, 1)] float TurnRate = 0.5f;
     [Space(5)]
     [SerializeField] bool SetInitalVelocity = false;
-    [ConditionalHide("SetInitalVelocity", true)][SerializeField] float ProjectileVelocity = 0;
+    [ConditionalHide("SetInitalVelocity", true)] [SerializeField] float ProjectileVelocity = 0;
     [SerializeField] bool Tracking = true;
 
-    [Header("Control Guided Variables")][Space(5)]
-    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)][SerializeField] string XInputAxis = null;
-    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)][SerializeField] string YInputAxis = null;
-    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)][SerializeField] float InputSensitivity = 0;
-    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)][SerializeField] float InputSmoothing = 0;
+    [Header("Control Guided Variables")]
+    [Space(5)]
+    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)] [SerializeField] string XInputAxis = null;
+    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)] [SerializeField] string YInputAxis = null;
+    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)] [SerializeField] float InputSensitivity = 0;
+    [ConditionalEnumHide("GuidanceMethod", (int)GuidanceSystem.Controlled)] [SerializeField] float InputSmoothing = 0;
     Vector3 SmoothVector, TargetDirection;
 
     Rigidbody ProjectileBody;
@@ -99,6 +100,6 @@ public class GuidedProjectile : MonoBehaviour {
     }
 
     public void EnableTracking() {
-
+        Tracking = !Tracking;
     }
 }
