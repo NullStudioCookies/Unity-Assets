@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// This script determines the inputs of game controllers
-/// and universaly maps all input axies and keys. Currently
-/// the script only works on the Windows platform.
-/// 
-/// Current mapped controllers:
-/// - Xbox one / 360
-/// - Playstation 4
-/// - Switch Joy cons
-/// </summary>
+//==============================================================//
+//  This script determines the inputs of game controllers		//
+//  and universaly maps all input axies and keys.				//
+//																//
+//  Current mapped controllers:									//
+//  - Xbox one / 360											//
+//  - Playstation 4												//
+//  - Switch Joy cons											//
+//==============================================================//
 
 public static class ControllerSupport
 {
@@ -192,10 +191,10 @@ public static class ControllerSupport
     }
     public static bool PlayStation_RightStick() {
         if (ToggleHoldStick) {
-            return Input.GetButton("PlayStation_LeftStick");
+            return Input.GetButton("PlayStation_RightStick");
         }
         else {
-            return Input.GetButtonDown("PlayStation_LeftStick");
+            return Input.GetButtonDown("PlayStation_RightStick");
         }
     }
 
