@@ -3,42 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// This script is a simple timer script witch can either 
-/// count up or count down. The script will allow for reseting,
-/// pausing and unpausing the timer. The timer is displayed on
-/// a UI text object.
-/// </summary>
+[DisallowMultipleComponent]
+public enum TimerFunction { CountingUp, CountingDown}
+public class Timer : MonoBehaviour
+{
+    public TimerFunction Function = TimerFunction.CountingUp;
+    public Text TimerText = null;
+    [ConditionalEnumHide("Function", (int)TimerFunction.CountingDown)]public int AllowedTime = 0;
+    public bool TimerIsPaused = true;
 
-enum TimerFunction { CountingUp, CountingDown}
-public class Timer : MonoBehaviour {
-    [SerializeField] bool TimerIsPaused = true;
-
-    [Header("Timer Properties")]
-    [Space(10)]
-    [SerializeField] TimerFunction Function;
-    [SerializeField] Text TimerText;
-
-    [Space(10)]
-    [ConditionalEnumHide("Function", (int)TimerFunction.CountingDown)][SerializeField] int AllowedTime;
-
-    float CurrentTime;
+    float CurrentTime = 0;
     string Minutes, Seconds;
-	
-	[ExecuteInEditMode]
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        ResetTimer(AllowedTime);
+    }
+
+    [ExecuteInEditMode]
     void OnValidate() {
         if (AllowedTime < 0) {
             AllowedTime = 0;
         }
     }
 
-    // Start is called before the first frame update
-    void Start() {
-        ResetTimer(AllowedTime);
-    }
-
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            PauseUnpauseTimer();
+        }
+        if (Input.GetKeyDown(KeyCode.R)) {
+            ResetTimer(60);
+        }
+        if (Input.GetKeyDown(KeyCode.S)) {
+            SwitchTimerFunction(TimerFunction.CountingDown, 60);
+        }
+
         if (!TimerIsPaused) {
             switch (Function) {
                 case TimerFunction.CountingUp:
@@ -65,8 +67,7 @@ public class Timer : MonoBehaviour {
         }
     }
 
-	// Reseting the timer 
-    public void ResetTimer(int TotalTime = 0) {
+    public void ResetTimer(int TotalTime) {
         TimerIsPaused = true;
         switch (Function) {
             case TimerFunction.CountingUp:
@@ -87,13 +88,11 @@ public class Timer : MonoBehaviour {
                 break;
         }
     }
-	
-	// Pause and unpausing the timer at any given time
+
     public void PauseUnpauseTimer() {
         TimerIsPaused = !TimerIsPaused;
     }
 
-	// Allows for switching the function of the timer without creating another script
     public void SwitchTimerFunction(TimerFunction _TimerFunction, int TotalTime = 0) {
         Function = _TimerFunction;
 

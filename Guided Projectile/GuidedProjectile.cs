@@ -15,9 +15,10 @@ using UnityEngine;
 enum GuidanceSystem { Controlled, Homing }
 enum ForwardAxis { X_Axis, Y_Axis, Z_Axis }
 [RequireComponent(typeof(Rigidbody))]
+[DisallowMultipleComponent]
 public class GuidedProjectile : MonoBehaviour {
-    [SerializeField] GuidanceSystem GuidanceMethod;
-    [Tooltip("This is used to set which way the projectile is facing.")] [SerializeField] ForwardAxis ForwardDirection;
+    [SerializeField] GuidanceSystem GuidanceMethod = GuidanceSystem.Controlled;
+    [Tooltip("This is used to set which way the projectile is facing.")] [SerializeField] ForwardAxis ForwardDirection = ForwardAxis.Z_Axis;
     [SerializeField] [Range(0, 1)] float TurnRate = 0.5f;
     [Space(5)]
     [SerializeField] bool SetInitalVelocity = false;

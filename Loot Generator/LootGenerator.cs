@@ -9,16 +9,16 @@ using UnityEngine;
 /// </summary>
 
 public class LootGenerator : MonoBehaviour {
-    [SerializeField] LootProperties[] LootTable;
+    [SerializeField] LootProperties[] LootTable = null;
 
     int MaxLootNumberPool = 1;
 
     // Creating a object container for a loot table
     [System.Serializable]
     class LootProperties {
-        public string LootCatagory;
-        [AbsoluteValue()] public int LootChance;
-        public GameObject[] Rewards;
+        public string LootCatagory = null;
+        [AbsoluteValue()] public int LootChance = 0;
+        public GameObject[] Rewards = null;
     }
 
     // Start is called before the first frame update
@@ -60,6 +60,6 @@ public class LootGenerator : MonoBehaviour {
 
     // Showcasing the reward
     void ShowReward(int Catagory, int Reward) {
-        //This section of the script is left open for the various ways of presenting loot to the player.
+        GameObject RewardObj = Instantiate(LootTable[Catagory].Rewards[Reward], transform.position, Quaternion.Euler(-90, 180, 0)) as GameObject;
     }
 }
