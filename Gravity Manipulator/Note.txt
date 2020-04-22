@@ -1,0 +1,18 @@
+Please keep in mind that the script and or asset may not be up to date with Unity!
+
+To use this script just simply import it into the project and add the script,
+to any game object in the game scene. This version of the script is using my Absolute Value Attribute,
+which can also be downloaded in the custom attributes folder.
+
+IF the script does not work or you do not wish to download the custom inspector simply remove 
+"[AbsoluteValue()]", "[ConditionalEnumHide...]" or "[ConditionalHide...]" and it will work.
+
+=============================================================================================
+
+These scripts are fairly easy to use and can be dynamicly adjusted in the inspector. The 
+"GravityBody" script should be attached to any object that you would want gravity to affect.
+As for the "GravityManipulator" script that should be attached to an object other than the one 
+with the "GravityBody" script. 
+
+When you attach the "GravityManipulator" script unity will throw an error. Do not worry it is caused
+from the script looking for components before all the required components get added.
