@@ -1,7 +1,7 @@
 The following scripts are for converting all negative number values in the inspector into positive number values.
 Please keep in mind that the script and or asset may not be up to date with Unity!
 
-AbsoluteValue.cs
+AbsoluteValueAttribute.cs
 - This script can be placed anywhere in the project.
 
 AbsoluteValuePropertyDrawer.cs
@@ -9,6 +9,8 @@ AbsoluteValuePropertyDrawer.cs
 
 =============================================================================================
 
-To use this attribute simply put [AbsoluteValue()] beside the variable.
+To use this attribute simply put [AbsoluteValue()] / [AbsoluteValue] beside the variable.
 
 [AbsoluteValue()] public int a;
+or
+[AbsoluteValue] public int a;

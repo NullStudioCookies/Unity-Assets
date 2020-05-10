@@ -9,7 +9,8 @@ using UnityEditor;
 /// It will simply make any negative number into positive using
 /// Mathf.abs.
 /// </summary>
-[CustomPropertyDrawer(typeof(AbsoluteValue))]
+
+[CustomPropertyDrawer(typeof(AbsoluteValueAttribute))]
 public class AbsoluteValuePropertyDrawer : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         if (property.propertyType == SerializedPropertyType.Integer) {
