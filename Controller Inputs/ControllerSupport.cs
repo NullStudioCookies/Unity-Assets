@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//==============================================================//
-//  This script determines the inputs of game controllers		//
-//  and universaly maps all input axies and keys.				//
-//																//
-//  Current mapped controllers:									//
-//  - Xbox one / 360											//
-//  - Playstation 4												//
-//  - Switch Joy cons											//
-//==============================================================//
+/// <summary>
+/// This script maps all input for Xbox and Playstation
+/// controllers. This version of the Controler Support
+/// script uses the old Unity input system.
+/// </summary>
 
 public static class ControllerSupport
 {
     #region Controller Properties
     //General controllers
-    public static bool ToggleHoldButtons;
-    public static bool ToggleHoldStick;
-    public static bool ToggleHoldBumpers;
+    public static bool HoldTopButton;
+    public static bool HoldRightButton;
+    public static bool HoldLeftButton;
+    public static bool HoldBottomButton;
+
+    public static bool HoldLeftStick;
+    public static bool HoldRightStick;
+
+    public static bool HoldLeftBumpers;
+    public static bool HoldRightBumpers;
+
     public static bool ToggleHoldExtras;
 
     //Switch specific
@@ -50,7 +54,7 @@ public static class ControllerSupport
 
     //Joystick Buttons
     public static bool Xbox_LeftStick() {
-        if (ToggleHoldStick) {
+        if (HoldLeftStick) {
             return Input.GetButton("Xbox_LeftStick");
         }
         else {
@@ -58,7 +62,7 @@ public static class ControllerSupport
         }
     }
     public static bool Xbox_RightStick() {
-        if (ToggleHoldStick) {
+        if (HoldRightStick) {
             return Input.GetButton("Xbox_RightStick");
         }
         else {
@@ -80,7 +84,7 @@ public static class ControllerSupport
 
     //Triggers and bumpers
     public static bool Xbox_LeftBump() {
-        if (ToggleHoldBumpers) {
+        if (HoldLeftBumpers) {
             return Input.GetButton("Xbox_LeftBump");
         }
         else {
@@ -88,7 +92,7 @@ public static class ControllerSupport
         }
     }
     public static bool Xbox_RightBump() {
-        if (ToggleHoldBumpers) {
+        if (HoldRightBumpers) {
             return Input.GetButton("Xbox_RightBump");
         }
         else {
@@ -108,7 +112,7 @@ public static class ControllerSupport
 
     //Buttons
     public static bool Xbox_AButton() {
-        if (ToggleHoldButtons) {
+        if (HoldBottomButton) {
             return Input.GetButton("Xbox_AButton");
         }
         else {
@@ -116,7 +120,7 @@ public static class ControllerSupport
         }
     }
     public static bool Xbox_BButton() {
-        if (ToggleHoldButtons) {
+        if (HoldRightButton) {
             return Input.GetButton("Xbox_BButton");
         }
         else {
@@ -124,7 +128,7 @@ public static class ControllerSupport
         }
     }
     public static bool Xbox_XButton() {
-        if (ToggleHoldButtons) {
+        if (HoldLeftButton) {
             return Input.GetButton("Xbox_XButton");
         }
         else {
@@ -132,7 +136,7 @@ public static class ControllerSupport
         }
     }
     public static bool Xbox_YButton() {
-        if (ToggleHoldButtons) {
+        if (HoldTopButton) {
             return Input.GetButton("Xbox_YButton");
         }
         else {
@@ -182,7 +186,7 @@ public static class ControllerSupport
 
     //Joystick Buttons
     public static bool PlayStation_LeftStick() {
-        if (ToggleHoldStick) {
+        if (HoldLeftStick) {
             return Input.GetButton("PlayStation_LeftStick");
         }
         else {
@@ -190,7 +194,7 @@ public static class ControllerSupport
         }
     }
     public static bool PlayStation_RightStick() {
-        if (ToggleHoldStick) {
+        if (HoldRightStick) {
             return Input.GetButton("PlayStation_RightStick");
         }
         else {
@@ -212,7 +216,7 @@ public static class ControllerSupport
 
     //Triggers and bumpers
     public static bool PlayStation_LeftBump() {
-        if (ToggleHoldBumpers) {
+        if (HoldLeftBumpers) {
             return Input.GetButton("PlayStation_LeftBump");
         } 
         else {
@@ -220,7 +224,7 @@ public static class ControllerSupport
         }
     }
     public static bool PlayStation_RightBump() {
-        if (ToggleHoldBumpers) {
+        if (HoldRightBumpers) {
             return Input.GetButton("PlayStation_RightBump");
         }
         else {
@@ -240,7 +244,7 @@ public static class ControllerSupport
 
     //Buttons
     public static bool PlayStation_SButton() {
-        if (ToggleHoldButtons) {
+        if (HoldLeftButton) {
             return Input.GetButton("PlayStation_SButton");
         }
         else {
@@ -248,7 +252,7 @@ public static class ControllerSupport
         }
     }
     public static bool PlayStation_XButton() {
-        if (ToggleHoldButtons) {
+        if (HoldBottomButton) {
             return Input.GetButton("PlayStation_XButton");
         }
         else {
@@ -256,7 +260,7 @@ public static class ControllerSupport
         }
     }
     public static bool PlayStation_OButton() {
-        if (ToggleHoldButtons) {
+        if (HoldRightButton) {
             return Input.GetButton("PlayStation_OButton");
         }
         else {
@@ -264,7 +268,7 @@ public static class ControllerSupport
         }
     }
     public static bool PlayStation_TButton() {
-        if (ToggleHoldButtons) {
+        if (HoldTopButton) {
             return Input.GetButton("PlayStation_TButton");
         }
         else {
@@ -293,140 +297,6 @@ public static class ControllerSupport
         }
         else {
             return Input.GetButtonDown("PlayStation_HomeButton");
-        }
-    }
-    #endregion
-
-    #region Switch Joy Con Controls
-    //Left and Right joysticks
-    public static float SwitchJoy_StickX() {
-        float X = 0;
-        X += Input.GetAxis("SwitchJoy_StickX");
-        return Mathf.Clamp(X, -1, 1);
-    }
-    public static float SwitchJoy_StickY() {
-        float X = 0;
-        X += Input.GetAxis("SwitchJoy_StickY");
-        return Mathf.Clamp(X, -1, 1);
-    }
-
-    //Joystick Buttons
-    public static bool SwitchJoy_LeftStick() {
-        if (ToggleHoldStick) {
-            return Input.GetButton("SwitchJoy_LeftStick");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_LeftStick");
-        }
-    }
-    public static bool SwitchJoy_RightStick() {
-        if (ToggleHoldStick) {
-            return Input.GetButton("SwitchJoy_RightStick");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_RightStick");
-        }
-    }
-
-    //D-pad or buttons
-    public static bool SwitchJoy_ALeft() {
-        if (ToggleHoldButtons) {
-            return Input.GetButton("SwitchJoy_ALeft");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_ALeft");
-        }
-    }
-    public static bool SwitchJoy_XUp() {
-        if (ToggleHoldButtons) {
-            return Input.GetButton("SwitchJoy_XUp");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_XUp");
-        }
-    }
-    public static bool SwitchJoy_BDown() {
-        if (ToggleHoldButtons) {
-            return Input.GetButton("SwitchJoy_BDown");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_BDown");
-        }
-    }
-    public static bool SwitchJoy_YRight() {
-        if (ToggleHoldButtons) {
-            return Input.GetButton("SwitchJoy_YRight");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_YRight");
-        }
-    }
-
-    //Triggers and bumpers
-    public static bool SwitchJoy_Bumper() {
-        if (ToggleHoldBumpers) {
-            return Input.GetButton("SwitchJoy_Bumper");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_Bumper");
-        }
-    }
-    public static bool SwitchJoy_Trigger() {
-        if (HoldSwitchTriggers) {
-            return Input.GetButton("SwitchJoy_Trigger");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_Trigger");
-        }
-    }
-
-    //Extra buttons
-    public static bool SwitchJoy_Minus() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("SwitchJoy_Minus");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_Minus");
-        }
-    }
-    public static bool SwitchJoy_Plus() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("SwitchJoy_Plus");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_Plus");
-        }
-    }
-    public static bool SwitchJoy_Capture() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("SwitchJoy_Capture");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_Capture");
-        }
-    }
-    public static bool SwitchJoy_Home() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("SwitchJoy_Home");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_Home");
-        }
-    }
-    public static bool SwitchJoy_SL() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("SwitchJoy_SL");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_SL");
-        }
-    }
-    public static bool SwitchJoy_SR() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("SwitchJoy_SR");
-        }
-        else {
-            return Input.GetButtonDown("SwitchJoy_SR");
         }
     }
     #endregion

@@ -1,0 +1,19 @@
+The following scripts are for creating a range slider similar to the Unity's "Range" attribute, but this will allow
+you to have a minimum value and a maximum value for the range slider. This attribute will only work with Vector2 or Vector2Int.
+
+Please keep in mind that the script and or asset may not be up to date with Unity!
+
+MinMaxRangeAttribute.cs
+- This script can be placed anywhere in the project.
+
+MinMaxRangePropertyDrawer.cs
+- Must be placed in a folder named "Editor".
+
+=============================================================================================
+
+To use this attribute simply put [MinMaxRange(min value, max value)] / [MinMaxRange] beside the variable.
+
+Floats: [MinMaxRange(min value, max value)] public Vector2 yourVariable;
+Ints:[MinMaxRange(min value, max value)] public Vector2Int yourVariable;
+
+PLEASE keep in mind if you choose to just put [MinMaxRange] the default values are 0, and 1.

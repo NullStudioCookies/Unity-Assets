@@ -9,8 +9,8 @@ NegativeValuePropertyDrawer.cs
 
 =============================================================================================
 
-To use this attribute simply put NegativeValue()] / NegativeValuebeside the variable.
+To use this attribute simply put [NegativeValue()] / [NegativeValue] beside the variable.
 
 NegativeValue()] public int a;
 or
-NegativeValuepublic int a;
+[NegativeValue] public int a;
