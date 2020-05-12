@@ -8,29 +8,9 @@ using UnityEngine;
 /// script uses the old Unity input system.
 /// </summary>
 
-public static class ControllerSupport
-{
-    #region Controller Properties
-    //General controllers
-    public static bool HoldTopButton;
-    public static bool HoldRightButton;
-    public static bool HoldLeftButton;
-    public static bool HoldBottomButton;
-
-    public static bool HoldLeftStick;
-    public static bool HoldRightStick;
-
-    public static bool HoldLeftBumpers;
-    public static bool HoldRightBumpers;
-
-    public static bool ToggleHoldExtras;
-
-    //Switch specific
-    public static bool HoldSwitchTriggers;
-    #endregion
-
+public static class ControllerSupport {
     #region Xbox Controls
-    //Left and Right joysticks
+    // Left and Right joysticks
     public static float Xbox_LeftStickX() {
         float X = 0;
         X += Input.GetAxis("Xbox_LeftStickX");
@@ -52,25 +32,28 @@ public static class ControllerSupport
         return Mathf.Clamp(X, -1, 1);
     }
 
-    //Joystick Buttons
-    public static bool Xbox_LeftStick() {
-        if (HoldLeftStick) {
-            return Input.GetButton("Xbox_LeftStick");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_LeftStick");
-        }
+    // Joystick Buttons
+    public static bool Xbox_LeftStickHold() {
+        return Input.GetButton("Xbox_LeftStick");
     }
-    public static bool Xbox_RightStick() {
-        if (HoldRightStick) {
-            return Input.GetButton("Xbox_RightStick");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_RightStick");
-        }
+    public static bool Xbox_LeftStickDown() {
+        return Input.GetButtonDown("Xbox_LeftStick");
+    }
+    public static bool Xbox_LeftStickUp() {
+        return Input.GetButtonUp("Xbox_LeftStick");
     }
 
-    //D-pad
+    public static bool Xbox_RightStickHold() {
+        return Input.GetButton("Xbox_RightStick");
+    }
+    public static bool Xbox_RightStickDown() {
+        return Input.GetButtonDown("Xbox_RightStick");
+    }
+    public static bool Xbox_RightStickUp() {
+        return Input.GetButtonUp("Xbox_RightStick");
+    }
+
+    // D-pad
     public static float Xbox_DpadX() {
         float X = 0;
         X += Input.GetAxis("Xbox_DpadX");
@@ -82,23 +65,28 @@ public static class ControllerSupport
         return Mathf.Clamp(X, -1, 1);
     }
 
-    //Triggers and bumpers
-    public static bool Xbox_LeftBump() {
-        if (HoldLeftBumpers) {
-            return Input.GetButton("Xbox_LeftBump");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_LeftBump");
-        }
+    // Sholder / Bumper buttons
+    public static bool Xbox_LeftBumpHold() {
+        return Input.GetButton("Xbox_LeftBump");
     }
-    public static bool Xbox_RightBump() {
-        if (HoldRightBumpers) {
-            return Input.GetButton("Xbox_RightBump");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_RightBump");
-        }
+    public static bool Xbox_LeftBumpDown() {
+        return Input.GetButtonDown("Xbox_LeftBump");
     }
+    public static bool Xbox_LeftBumpUp() {
+        return Input.GetButtonUp("Xbox_LeftBump");
+    }
+
+    public static bool Xbox_RightBumpHold() {
+        return Input.GetButton("Xbox_RightBump");
+    }
+    public static bool Xbox_RightBumpDown() {
+        return Input.GetButtonDown("Xbox_RightBump");
+    }
+    public static bool Xbox_RightBumpUp() {
+        return Input.GetButtonUp("Xbox_RightBump");
+    }
+
+    // Triggers
     public static float Xbox_LeftTrigger() {
         float X = 0;
         X += Input.GetAxis("Xbox_LeftTrigger");
@@ -110,54 +98,66 @@ public static class ControllerSupport
         return Mathf.Clamp(X, 0, 1);
     }
 
-    //Buttons
-    public static bool Xbox_AButton() {
-        if (HoldBottomButton) {
-            return Input.GetButton("Xbox_AButton");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_AButton");
-        }
+    // Face buttons
+    public static bool Xbox_AButtonHold() {
+        return Input.GetButton("Xbox_AButton");
     }
-    public static bool Xbox_BButton() {
-        if (HoldRightButton) {
-            return Input.GetButton("Xbox_BButton");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_BButton");
-        }
+    public static bool Xbox_AButtonDown() {
+        return Input.GetButtonDown("Xbox_AButton");
     }
-    public static bool Xbox_XButton() {
-        if (HoldLeftButton) {
-            return Input.GetButton("Xbox_XButton");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_XButton");
-        }
+    public static bool Xbox_AButtonUp() {
+        return Input.GetButtonUp("Xbox_AButton");
     }
-    public static bool Xbox_YButton() {
-        if (HoldTopButton) {
-            return Input.GetButton("Xbox_YButton");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_YButton");
-        }
+
+    public static bool Xbox_BButtonHold() {
+        return Input.GetButton("Xbox_BButton");
     }
-    public static bool Xbox_BackButton() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("Xbox_StartButton");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_StartButton");
-        }
+    public static bool Xbox_BButtonDown() {
+        return Input.GetButtonDown("Xbox_BButton");
     }
-    public static bool Xbox_StartButton() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("Xbox_StartButton");
-        }
-        else {
-            return Input.GetButtonDown("Xbox_StartButton");
-        }
+    public static bool Xbox_BButtonUp() {
+        return Input.GetButtonUp("Xbox_BButton");
+    }
+
+    public static bool Xbox_XButtonHold() {
+        return Input.GetButton("Xbox_XButton");
+    }
+    public static bool Xbox_XButtonDown() {
+        return Input.GetButtonDown("Xbox_XButton");
+    }
+    public static bool Xbox_XButtonUp() {
+        return Input.GetButtonUp("Xbox_XButton");
+    }
+
+    public static bool Xbox_YButtonHold() {
+        return Input.GetButton("Xbox_YButton");
+    }
+    public static bool Xbox_YButtonDown() {
+        return Input.GetButtonDown("Xbox_YButton");
+    }
+    public static bool Xbox_YButtonUp() {
+        return Input.GetButtonUp("Xbox_YButton");
+    }
+
+    // Extra / Options buttons
+    public static bool Xbox_BackButtonHold() {
+        return Input.GetButton("Xbox_StartButton");
+    }
+    public static bool Xbox_BackButtonDown() {
+        return Input.GetButtonDown("Xbox_StartButton");
+    }
+    public static bool Xbox_BackButtonUp() {
+        return Input.GetButtonUp("Xbox_StartButton");
+    }
+
+    public static bool Xbox_StartButtonHold() {
+        return Input.GetButton("Xbox_StartButton");
+    }
+    public static bool Xbox_StartButtonDown() {
+        return Input.GetButtonDown("Xbox_StartButton");
+    }
+    public static bool Xbox_StartButtonUp() {
+        return Input.GetButtonUp("Xbox_StartButton");
     }
     #endregion
 
@@ -185,21 +185,24 @@ public static class ControllerSupport
     }
 
     //Joystick Buttons
-    public static bool PlayStation_LeftStick() {
-        if (HoldLeftStick) {
-            return Input.GetButton("PlayStation_LeftStick");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_LeftStick");
-        }
+    public static bool PlayStation_LeftStickHold() {
+        return Input.GetButton("PlayStation_LeftStick");
     }
-    public static bool PlayStation_RightStick() {
-        if (HoldRightStick) {
-            return Input.GetButton("PlayStation_RightStick");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_RightStick");
-        }
+    public static bool PlayStation_LeftStickDown() {
+        return Input.GetButtonDown("PlayStation_LeftStick");
+    }
+    public static bool PlayStation_LeftStickUp() {
+        return Input.GetButtonUp("PlayStation_LeftStick");
+    }
+
+    public static bool PlayStation_RightStickHold() {
+        return Input.GetButton("PlayStation_RightStick");
+    }
+    public static bool PlayStation_RightStickDown() {
+        return Input.GetButtonDown("PlayStation_RightStick");
+    }
+    public static bool PlayStation_RightStickUp() {
+        return Input.GetButtonUp("PlayStation_RightStick");
     }
 
     //D-pad
@@ -214,23 +217,28 @@ public static class ControllerSupport
         return Mathf.Clamp(X, -1, 1);
     }
 
-    //Triggers and bumpers
-    public static bool PlayStation_LeftBump() {
-        if (HoldLeftBumpers) {
-            return Input.GetButton("PlayStation_LeftBump");
-        } 
-        else {
-            return Input.GetButtonDown("PlayStation_LeftBump");
-        }
+    // Sholder / Bumper buttons
+    public static bool PlayStation_LeftBumpHold() {
+        return Input.GetButton("PlayStation_LeftBump");
     }
-    public static bool PlayStation_RightBump() {
-        if (HoldRightBumpers) {
-            return Input.GetButton("PlayStation_RightBump");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_RightBump");
-        }
+    public static bool PlayStation_LeftBumpDown() {
+        return Input.GetButtonDown("PlayStation_LeftBump");
     }
+    public static bool PlayStation_LeftBumpUp() {
+        return Input.GetButtonUp("PlayStation_LeftBump");
+    }
+
+    public static bool PlayStation_RightBumpHold() {
+        return Input.GetButton("PlayStation_RightBump");
+    }
+    public static bool PlayStation_RightBumpDown() {
+        return Input.GetButtonDown("PlayStation_RightBump");
+    }
+    public static bool PlayStation_RightBumpUp() {
+        return Input.GetButtonUp("PlayStation_RightBump");
+    }
+
+    // Triggers
     public static float PlayStation_LeftTrigger() {
         float X = 0;
         X += Input.GetAxis("PlayStation_LeftTrigger");
@@ -242,62 +250,76 @@ public static class ControllerSupport
         return Mathf.Clamp(X, 0, 1);
     }
 
-    //Buttons
-    public static bool PlayStation_SButton() {
-        if (HoldLeftButton) {
-            return Input.GetButton("PlayStation_SButton");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_SButton");
-        }
+    // Face buttons
+    public static bool PlayStation_SButtonHold() {
+        return Input.GetButton("PlayStation_SButton");
     }
-    public static bool PlayStation_XButton() {
-        if (HoldBottomButton) {
-            return Input.GetButton("PlayStation_XButton");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_XButton");
-        }
+    public static bool PlayStation_SButtonDown() {
+        return Input.GetButtonDown("PlayStation_SButton");
     }
-    public static bool PlayStation_OButton() {
-        if (HoldRightButton) {
-            return Input.GetButton("PlayStation_OButton");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_OButton");
-        }
+    public static bool PlayStation_SButtonUp() {
+        return Input.GetButtonUp("PlayStation_SButton");
     }
-    public static bool PlayStation_TButton() {
-        if (HoldTopButton) {
-            return Input.GetButton("PlayStation_TButton");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_TButton");
-        }
+
+    public static bool PlayStation_XButtonHold() {
+        return Input.GetButton("PlayStation_XButton");
     }
-    public static bool PlayStation_ShareButton() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("PlayStation_ShareButton");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_ShareButton");
-        }
+    public static bool PlayStation_XButtonDown() {
+        return Input.GetButtonDown("PlayStation_XButton");
     }
-    public static bool PlayStation_OptionsButton() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("PlayStation_OptionsButton");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_OptionsButton");
-        }
+    public static bool PlayStation_XButtonUp() {
+        return Input.GetButtonUp("PlayStation_XButton");
     }
-    public static bool PlayStation_HomeButton() {
-        if (ToggleHoldExtras) {
-            return Input.GetButton("PlayStation_HomeButton");
-        }
-        else {
-            return Input.GetButtonDown("PlayStation_HomeButton");
-        }
+
+    public static bool PlayStation_OButtonHold() {
+        return Input.GetButton("PlayStation_OButton");
+    }
+    public static bool PlayStation_OButtonDown() {
+        return Input.GetButtonDown("PlayStation_OButton");
+    }
+    public static bool PlayStation_OButtonUp() {
+        return Input.GetButtonUp("PlayStation_OButton");
+    }
+
+    public static bool PlayStation_TButtonHold() {
+        return Input.GetButton("PlayStation_TButton");
+    }
+    public static bool PlayStation_TButtonDown() {
+        return Input.GetButtonDown("PlayStation_TButton");
+    }
+    public static bool PlayStation_TButtonUp() {
+        return Input.GetButtonUp("PlayStation_TButton");
+    }
+
+    // Extra / Options buttons
+    public static bool PlayStation_ShareButtonHold() {
+        return Input.GetButton("PlayStation_ShareButton");
+    }
+    public static bool PlayStation_ShareButtonDown() {
+        return Input.GetButtonDown("PlayStation_ShareButton");
+    }
+    public static bool PlayStation_ShareButtonUp() {
+        return Input.GetButtonUp("PlayStation_ShareButton");
+    }
+
+    public static bool PlayStation_OptionsButtonHold() {
+        return Input.GetButton("PlayStation_OptionsButton");
+    }
+    public static bool PlayStation_OptionsButtonDown() {
+        return Input.GetButtonDown("PlayStation_OptionsButton");
+    }
+    public static bool PlayStation_OptionsButtonUp() {
+        return Input.GetButtonUp("PlayStation_OptionsButton");
+    }
+
+    public static bool PlayStation_HomeButtonHold() {
+        return Input.GetButton("PlayStation_HomeButton");
+    }
+    public static bool PlayStation_HomeButtonDown() {
+        return Input.GetButtonDown("PlayStation_HomeButton");
+    }
+    public static bool PlayStation_HomeButtonUp() {
+        return Input.GetButtonUp("PlayStation_HomeButton");
     }
     #endregion
 }

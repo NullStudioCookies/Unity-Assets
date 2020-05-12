@@ -13,3 +13,18 @@ InputManager script:
 
 InputManager Asset:
 "Project Name" -> ProjectSettings
+
+==============================================================================
+
+To use this script, it is very simple! the script will work without you having
+to attach the script to any game object. 
+
+Create a reference to the script where you want to detect input:
+public ControllerSupport myController;
+
+Simply call the method you want to find out if there is input!
+myController.Xbox_LeftStickX(); <--- Example
+
+PLEASE keep in mind that they do not all return the same value.
+Joysticks and Triggers return float and will output 0 when there is no input.
+Everything else will return a true or false.
