@@ -1,14 +1,20 @@
-The following script and asset are for taking in inputs from controllers.
-All controller inputs are currently mapped for windows, there is currently
-no support for MacOS or Linux. Currently there is also no support for an
-special features of the controllers like Rumble.
+The following scripts and assets are for taking in inputs from controllers.
+All controller inputs are currently mapped for windows, I am not sure if it
+will work for other platforms. There are 2 versions of the Controller Support
+script, one uses the Unity's old input manager system while the other uses the
+new input system. PLEASE use one or the other they will not work together!
 
 Please keep in mind that the script and or asset may not be up to date!
+
+==============================================================================
+
+
+Old Input system
 
 If you do decide to add more inputs to the script remember to add more 
 input axies in Unity's Input system under "Project Settings".
 
-InputManager script:
+ControllerSupport script:
 "Project Name" -> Assets -> where ever you want
 
 InputManager Asset:

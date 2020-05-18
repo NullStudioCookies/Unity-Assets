@@ -11,25 +11,29 @@ using UnityEngine;
 public static class ControllerSupport {
     #region Xbox Controls
     // Left and Right joysticks
-    public static float Xbox_LeftStickX() {
+    public static Vector2 Xbox_LeftStick() {
         float X = 0;
         X += Input.GetAxis("Xbox_LeftStickX");
-        return Mathf.Clamp(X, -1, 1);
+        X =  Mathf.Clamp(X, -1, 1);
+
+        float Y = 0;
+        Y += Input.GetAxis("Xbox_LeftStickY");
+        Y = Mathf.Clamp(Y, -1, 1);
+
+        Vector2 Value = new Vector2(X, Y);
+        return Value;
     }
-    public static float Xbox_LeftStickY() {
-        float X = 0;
-        X += Input.GetAxis("Xbox_LeftStickY");
-        return Mathf.Clamp(X, -1, 1);
-    }
-    public static float Xbox_RightStickX() {
+    public static Vector2 Xbox_RightStick() {
         float X = 0;
         X += Input.GetAxis("Xbox_RightStickX");
-        return Mathf.Clamp(X, -1, 1);
-    }
-    public static float Xbox_RightStickY() {
-        float X = 0;
-        X += Input.GetAxis("Xbox_RightStickY");
-        return Mathf.Clamp(X, -1, 1);
+        X = Mathf.Clamp(X, -1, 1);
+
+        float Y = 0;
+        Y += Input.GetAxis("Xbox_RightStickY");
+        Y = Mathf.Clamp(Y, -1, 1);
+
+        Vector2 Value = new Vector2(X, Y);
+        return Value;
     }
 
     // Joystick Buttons
@@ -54,15 +58,17 @@ public static class ControllerSupport {
     }
 
     // D-pad
-    public static float Xbox_DpadX() {
+    public static Vector2 Xbox_Dpad() {
         float X = 0;
         X += Input.GetAxis("Xbox_DpadX");
-        return Mathf.Clamp(X, -1, 1);
-    }
-    public static float Xbox_DpadY() {
-        float X = 0;
-        X += Input.GetAxis("Xbox_DpadY");
-        return Mathf.Clamp(X, -1, 1);
+        X = Mathf.Clamp(X, -1, 1);
+
+        float Y = 0;
+        Y += Input.GetAxis("Xbox_DpadY");
+        Y = Mathf.Clamp(Y, -1, 1);
+
+        Vector2 Value = new Vector2(X, Y);
+        return Value;
     }
 
     // Sholder / Bumper buttons
@@ -163,25 +169,29 @@ public static class ControllerSupport {
 
     #region Playstation Controls
     //Left and Right joysticks
-    public static float PlayStation_LeftStickX() {
+    public static Vector2 PlayStation_LeftStick() {
         float X = 0;
         X += Input.GetAxis("PlayStation_LeftStickX");
-        return Mathf.Clamp(X, -1, 1);
+        X = Mathf.Clamp(X, -1, 1);
+
+        float Y = 0;
+        Y += Input.GetAxis("PlayStation_LeftStickY");
+        Y = Mathf.Clamp(Y, -1, 1);
+
+        Vector2 Value = new Vector2(X, Y);
+        return Value;
     }
-    public static float PlayStation_LeftStickY() {
-        float X = 0;
-        X += Input.GetAxis("PlayStation_LeftStickY");
-        return Mathf.Clamp(X, -1, 1);
-    }
-    public static float PlayStation_RightStickX() {
+    public static Vector2 PlayStation_RightStick() {
         float X = 0;
         X += Input.GetAxis("PlayStation_RightStickX");
-        return Mathf.Clamp(X, -1, 1);
-    }
-    public static float PlayStation_RightStickY() {
-        float X = 0;
-        X += Input.GetAxis("PlayStation_RightStickY");
-        return Mathf.Clamp(X, -1, 1);
+        X = Mathf.Clamp(X, -1, 1);
+
+        float Y = 0;
+        Y += Input.GetAxis("PlayStation_RightStickY");
+        Y = Mathf.Clamp(Y, -1, 1);
+
+        Vector2 Value = new Vector2(X, Y);
+        return Value;
     }
 
     //Joystick Buttons
@@ -206,15 +216,17 @@ public static class ControllerSupport {
     }
 
     //D-pad
-    public static float PlayStation_DpadX() {
+    public static Vector2 PlayStation_Dpad() {
         float X = 0;
         X += Input.GetAxis("PlayStation_DpadX");
-        return Mathf.Clamp(X, -1, 1);
-    }
-    public static float PlayStation_DpadY() {
-        float X = 0;
-        X += Input.GetAxis("PlayStation_DpadY");
-        return Mathf.Clamp(X, -1, 1);
+        X = Mathf.Clamp(X, -1, 1);
+
+        float Y = 0;
+        Y += Input.GetAxis("PlayStation_DpadY");
+        Y = Mathf.Clamp(Y, -1, 1);
+
+        Vector2 Value = new Vector2(X, Y);
+        return Value;
     }
 
     // Sholder / Bumper buttons
