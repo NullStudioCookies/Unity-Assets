@@ -1,0 +1,17 @@
+The following scripts are for clamping any given variable with a lowest possible value or
+the highest possible value.
+
+Please keep in mind that the script and or asset may not be up to date with Unity!
+
+MinMaxValueAttribute.cs
+- This script can be placed anywhere in the project.
+
+MinMaxValuePropertyDrawer.cs
+- Must be placed in a folder named "Editor".
+
+=============================================================================================
+
+To use this attribute simply put [MinValue(any number)] / [MaxValue(any number)] beside the variable.
+
+Floats: [MinValue(any number)] public float yourVariable;
+Ints:[MaxValue(any number)] public int yourVariable;
