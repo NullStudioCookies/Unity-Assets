@@ -127,6 +127,20 @@ public class GravityManipulator : MonoBehaviour {
         }
     }
 
+    // Change gravity force and or range
+    public void ChangeGravityForce(float NewGravForce = 0) {
+        gravityForce = NewGravForce;
+    }
+    public void ChangeGravityRangeBox(Vector3 BoxSize) {
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        boxCollider.size = BoxSize;
+    }
+    public void ChangeGravityRangeSphere(float SphereRange) {
+        SphereCollider sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider.radius = SphereRange;
+    }
+
+
     void OnTriggerEnter(Collider obj) {
         if (limitedGravityArea && obj.GetComponent<GravityBody>() != null) {
             obj.GetComponent<GravityBody>().AddManipulator(this);

@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[DisallowMultipleComponent]
+/// <summary>
+/// This is a simple yet universal timer script, this script will
+/// work for pretty much any scenario.
+/// </summary>
+
 public enum TimerFunction { CountingUp, CountingDown}
 public class Timer : MonoBehaviour
 {
@@ -31,16 +35,6 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            PauseUnpauseTimer();
-        }
-        if (Input.GetKeyDown(KeyCode.R)) {
-            ResetTimer(60);
-        }
-        if (Input.GetKeyDown(KeyCode.S)) {
-            SwitchTimerFunction(TimerFunction.CountingDown, 60);
-        }
-
         if (!TimerIsPaused) {
             switch (Function) {
                 case TimerFunction.CountingUp:
@@ -67,7 +61,8 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void ResetTimer(int TotalTime) {
+    // Rest the timer
+    public void ResetTimer(int TotalTime = 0) {
         TimerIsPaused = true;
         switch (Function) {
             case TimerFunction.CountingUp:
@@ -89,10 +84,12 @@ public class Timer : MonoBehaviour
         }
     }
 
+    // Pause and unpause the timer
     public void PauseUnpauseTimer() {
         TimerIsPaused = !TimerIsPaused;
     }
 
+    // Change the type of timer
     public void SwitchTimerFunction(TimerFunction _TimerFunction, int TotalTime = 0) {
         Function = _TimerFunction;
 
