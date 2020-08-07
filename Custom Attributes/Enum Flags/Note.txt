@@ -1,0 +1,24 @@
+The following scripts are for hiding or disabling variables in the inspector.
+Please keep in mind that the script and or asset may not be up to date with Unity!
+
+EnumFlagsAttribute.cs
+- This script can be placed anywhere in the project.
+
+EnumFlagsPropertyDrawer.cs
+- Must be placed in a folder named "Editor".
+
+=============================================================================================
+
+To use this attribute create an enum like this:
+
+ [System.Flags]
+ public enum MyEnum
+ {
+     Flag0 = (1 << 0),
+     Flag1 = (1 << 1),
+     Flag2 = (1 << 2),
+     Flag3 = (1 << 3),
+ }
+ 
+ Next use the tag:
+ [EnumFlagsAttribute] MyEnum my_flags;
