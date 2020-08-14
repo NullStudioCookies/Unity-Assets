@@ -1,0 +1,72 @@
+=========================================================================================================
+The "Read Only" attribute allows for any variable to be only read and not editable
+by other scripts.
+
+To use this attribute simply put [ReadOnly] beside the variable.
+[ReadOnly] public int a;
+
+=========================================================================================================
+The "Negative Value" attribute makes any numerical value negative. Why do would any need this?!
+I'm not sure myself!
+
+To use this attribute simply put [NegativeValue()] / [NegativeValue] beside the variable.
+NegativeValue()] public int a;
+or
+[NegativeValue] public int a;
+
+=========================================================================================================
+The "Min Max Range" attribute creates a double ended slider you can set the lowest possible value and the
+highest possible value.
+
+To use this attribute simply put [MinMaxRange(min value, max value)] / [MinMaxRange] beside the variable.
+Floats: [MinMaxRange(min value, max value)] public Vector2 yourVariable;
+Ints:[MinMaxRange(min value, max value)] public Vector2Int yourVariable;
+=========================================================================================================
+The "Min Max Value" attribute forces any numerical value to be limited by the specified min / max value.
+
+To use this attribute simply put [MinValue(any number)] / [MaxValue(any number)] beside the variable.
+Floats: [MinValue(any number)] public float yourVariable;
+Ints:[MaxValue(any number)] public int yourVariable;
+=========================================================================================================
+The "Enum Flags" attribute allows you to select multiple enums at once.
+
+To use this attribute create an enum like this:
+
+ [System.Flags]
+ public enum MyEnum
+ {
+     Flag0 = (1 << 0),
+     Flag1 = (1 << 1),
+     Flag2 = (1 << 2),
+     Flag3 = (1 << 3),
+ }
+ 
+ Next use the tag:
+ [EnumFlagsAttribute] MyEnum my_flags;
+=========================================================================================================
+The "Conditional Hide" attribute allows you to hide, disable, or enable variables based on another value.
+
+To hide/show variables is simple use [ConditionalHide("variable name", true)]
+
+public bool A;
+[ConditionalHide("A", true)] public bool B;
+---------------------------------------------------------------------------------------------------------
+To disable the variables either remove the bool or set it to false;
+
+public bool A;
+[ConditionalHide("A", false)] public bool B;
+[ConditionalHide("A")] public bool C;
+---------------------------------------------------------------------------------------------------------
+To enable/disable the variables using enums
+
+enum EnumName {enumValue1, enumValue2}
+EnumName Variable;
+[ConditionalEnumHide("Variable", (int)EnumName.enumValue1)] public bool B;
+=========================================================================================================
+The "Absolute Value" attribute forces any numerical value to be positive.
+
+To use this attribute simply put [AbsoluteValue()] / [AbsoluteValue] beside the variable.
+[AbsoluteValue()] public int a;
+or
+[AbsoluteValue] public int a;
+=========================================================================================================

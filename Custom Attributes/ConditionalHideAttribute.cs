@@ -1,18 +1,16 @@
-﻿using UnityEngine;
-using System;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
-/// This script is to create all of the attribute tags
-/// that can be used in any script.
+/// This script allows to hide/show, enable or disable variables
+/// based on another variable's value.
 /// </summary>
 
-[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
+[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | 
     AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
-public class ConditionalHideAttribute : PropertyAttribute {
-    //The name of the bool field that will be in control
+public class ConditionalHideAttribute : PropertyAttribute
+{
     public string ConditionalSourceField = "";
-    //TRUE = Hide in inspector / FALSE = Disable in inspector 
     public bool HideInInspector = false;
 
     public ConditionalHideAttribute(string conditionalSourceField) {
@@ -29,7 +27,6 @@ public class ConditionalHideAttribute : PropertyAttribute {
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
     AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
 public class ConditionalEnumHideAttribute : PropertyAttribute {
-    //The name of the bool field that will be in control
     public string ConditionalSourceField = "";
 
     public int EnumValue1 = 0;

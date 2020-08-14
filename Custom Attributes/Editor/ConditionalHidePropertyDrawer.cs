@@ -2,27 +2,28 @@
 using UnityEditor;
 
 /// <summary>
-/// This script is the logic for the custom attributes.
+/// This script is the logic for hiding variables using a condition
+/// of another variable.
 /// </summary>
 
 [CustomPropertyDrawer(typeof(ConditionalHideAttribute))]
-public class ConditionalHidePropertyDrawer : PropertyDrawer {
+public class ConditionalHidePropertyDrawer : PropertyDrawer
+{
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         ConditionalHideAttribute condHAtt = (ConditionalHideAttribute)attribute;
-        bool enabled = GetConditionalHideAttributeResult(condHAtt, property);
+        bool enabled = GetCondtionalHideAttributeResult(condHAtt, property);
 
         bool wasEnabled = GUI.enabled;
         GUI.enabled = enabled;
         if (!condHAtt.HideInInspector || enabled) {
             EditorGUI.PropertyField(position, property, label, true);
         }
-
         GUI.enabled = wasEnabled;
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
         ConditionalHideAttribute condHAtt = (ConditionalHideAttribute)attribute;
-        bool enabled = GetConditionalHideAttributeResult(condHAtt, property);
+        bool enabled = GetCondtionalHideAttributeResult(condHAtt, property);
 
         if (!condHAtt.HideInInspector || enabled) {
             return EditorGUI.GetPropertyHeight(property, label);
@@ -32,19 +33,15 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer {
         }
     }
 
-    private bool GetConditionalHideAttributeResult(ConditionalHideAttribute condHAtt, SerializedProperty property) {
+    private bool GetCondtionalHideAttributeResult(ConditionalHideAttribute condHAtt, SerializedProperty property) {
         bool enabled = true;
-        string propertyPath = property.propertyPath; //returns the property path of the property we want to apply the attribute to
-        string conditionPath = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField); //changes the path to the conditionalsource property path
+        string propertyPath = property.propertyPath;
+        string conditionPath = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField);
         SerializedProperty sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
 
         if (sourcePropertyValue != null) {
             enabled = sourcePropertyValue.boolValue;
         }
-        else {
-            Debug.LogWarning("Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " + condHAtt.ConditionalSourceField);
-        }
-
         return enabled;
     }
 }
@@ -53,20 +50,19 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer {
 public class ConditionalEnumHidePropertyDrawer : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         ConditionalEnumHideAttribute condHAtt = (ConditionalEnumHideAttribute)attribute;
-        int enumValue = GetConditionalHideAttributeResult(condHAtt, property);
+        int enumValue = GetCondtionalEnumHideAttributeResult(condHAtt, property);
 
         bool wasEnabled = GUI.enabled;
         GUI.enabled = ((condHAtt.EnumValue1 == enumValue) || (condHAtt.EnumValue2 == enumValue));
         if (!condHAtt.HideInInspector || (condHAtt.EnumValue1 == enumValue) || (condHAtt.EnumValue2 == enumValue)) {
             EditorGUI.PropertyField(position, property, label, true);
         }
-
         GUI.enabled = wasEnabled;
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
         ConditionalEnumHideAttribute condHAtt = (ConditionalEnumHideAttribute)attribute;
-        int enumValue = GetConditionalHideAttributeResult(condHAtt, property);
+        int enumValue = GetCondtionalEnumHideAttributeResult(condHAtt, property);
 
         if (!condHAtt.HideInInspector || (condHAtt.EnumValue1 == enumValue) || (condHAtt.EnumValue2 == enumValue)) {
             return EditorGUI.GetPropertyHeight(property, label);
@@ -76,36 +72,26 @@ public class ConditionalEnumHidePropertyDrawer : PropertyDrawer {
         }
     }
 
-    private int GetConditionalHideAttributeResult(ConditionalEnumHideAttribute condHAtt, SerializedProperty property) {
+    private int GetCondtionalEnumHideAttributeResult(ConditionalEnumHideAttribute condHAtt, SerializedProperty property) {
         int enumValue = 0;
-
         SerializedProperty sourcePropertyValue = null;
-        //Get the full relative property path of the sourcefield so we can have nested hiding
         if (!property.isArray) {
-            string propertyPath = property.propertyPath; //returns the property path of the property we want to apply the attribute to
-            string conditionPath = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField); //changes the path to the conditionalsource property path
+            string propertyPath = property.propertyPath;
+            string conditionPath = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField);
             sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
 
-            //if the find failed->fall back to the old system
             if (sourcePropertyValue == null) {
-                //original implementation (doens't work with nested serializedObjects)
                 sourcePropertyValue = property.serializedObject.FindProperty(condHAtt.ConditionalSourceField);
             }
         }
         else {
-            //original implementation (doens't work with nested serializedObjects)
             sourcePropertyValue = property.serializedObject.FindProperty(condHAtt.ConditionalSourceField);
         }
-
 
         if (sourcePropertyValue != null) {
             enumValue = sourcePropertyValue.enumValueIndex;
         }
-        else {
-            //Debug.LogWarning("Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " + condHAtt.ConditionalSourceField);
-        }
 
         return enumValue;
     }
-
 }

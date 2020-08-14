@@ -1,0 +1,48 @@
+Please keep in mind that the script and or asset may not be up to date with Unity!
+
+This script contains many of my custom attributes, please download the:
+Read Only, Enum Flags, Min Value
+
+The "WeaponSway" script allows the weapon gameobject to rotate and sway when looking around in the scene.
+
+The "GunController" script contains all the functionality of the gun itself! All of the script's functionality
+can be accessed outside of the script and can work for any and all platfroms.
+
+The "GunProperties" script is a scriptable object allowing you to create multiple different data containers for
+any number of guns in the project.
+
+===============================================================================================================
+
+Using this asset is made very easy! In the prefabs folder add the "Weapon Anchor" prefab to the scene, it should be
+attached to your character using the weapon. 
+
+Inside the prefab the game object "Weapon" is where you can place the model of the gun inside the "Mesh Filter" and 
+you can add the materials to the gun.
+
+For the Gun Controller script the only things that will need to be changed are the "Aim Fire Position" and the "Weapon Properties" field.
+Move the "Weapon" Game Object to the desired position for aiming and copy the position to the "Aim Fire Position" fields.
+
+To Create a Weapon Property, got to the project folder -> Right click -> Create -> Scriptable Objects -> Gun Properties
+Name it and fill in your new Gun Properties. Once you are done simply drag your new scriptable object int the the "Weapon Properties"
+field.
+
+Using these scripts is also very simple! Fortunetly the only script you will need to referance is the "GunController" script,
+the script has selected methods and values that are public. These methods and values are what you will be using to perform the 
+various functionalities in the script.
+
+Public Methods:
+- SwayInput(float X_Input, float Y_Input) <- This is used for weapon sway script, give the values of the input for looking around.
+
+- AimDownSights(bool AimInput = false) <- ADS, this can be used like a toggle, change the "AimInput" bool.
+
+- Shoot(bool FireInput = false) <- Shooting the gun, change the "AimFireInput" bool.
+
+- ToggleFire() <- Switches between the possible fire selection types.
+
+- Reload() <- Reloads the gun.
+
+- AmmoResupply() <- Refills all the ammo for the gun.
+
+Public values:
+- TotalRemainingAmmo, RemainingMagazineAmmo: These 2 variables can be used to show how much ammo is left via UI.
+
