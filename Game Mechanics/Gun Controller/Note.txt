@@ -1,7 +1,7 @@
 Please keep in mind that the script and or asset may not be up to date with Unity!
 
 This script contains many of my custom attributes, please download the:
-Read Only, Enum Flags, Min Value
+Custom Attributes folder
 
 The "WeaponSway" script allows the weapon gameobject to rotate and sway when looking around in the scene.
 
