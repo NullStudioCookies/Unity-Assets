@@ -1,3 +1,9 @@
+You can download the entire folder and place it anywhere in the unity project! The scripts will work
+automaticly. Below are more information about the various attributes and how to use them.
+
+PSA: Some of these attributes if not all of them will not work together, mostly because of Unity it self!
+You can use these attributes along side with the Unity provided attributes.
+
 =========================================================================================================
 The "Read Only" attribute allows for any variable to be only read and not editable
 by other scripts.
